@@ -1,11 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function UserProfile() {
-  const user = {
-    username: "bhabinpun",
-    email: "bhabin@example.com",
-    role: "Admin",
-  };
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   return (
     <div className="flex justify-center items-center min-h-screen px-4 sm:px-0 py-8">
