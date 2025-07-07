@@ -1,10 +1,14 @@
+import Navbar from "@/components/navbar/Navbar";
 import { Outlet } from "react-router-dom";
+import { Toaster } from "sonner";
 
 const AuthLayout = () => {
   return (
     <>
-      <div className="flex justify-center items-center h-screen">
+      <Navbar />
+      <div className="pt-[72px] sm:pt-4">
         <Outlet />
+        <Toaster position="top-center" />
       </div>
     </>
   );
