@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/form";
 import { AlertCircle, CheckCircle, ShieldAlert } from "lucide-react";
 import { toast } from "sonner";
+import useRestrictedRoute from "@/hooks/useRestrictedRoute";
 
 const userFormSchema = z.object({
   username: z.string().min(2, { message: "at least 2 characters required" }),
@@ -38,6 +39,7 @@ const userFormSchema = z.object({
 });
 
 export function RegisterForm() {
+  useRestrictedRoute();
   const form = useForm<z.infer<typeof userFormSchema>>({
     resolver: zodResolver(userFormSchema),
     defaultValues: {
