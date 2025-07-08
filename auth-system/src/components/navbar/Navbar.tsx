@@ -1,10 +1,8 @@
 import { CheckCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { toast } from "sonner";
 
 const Navbar = () => {
-  const [isLoggedOut, setIsLoggedOut] = useState(false);
   const token = localStorage.getItem("accessToken");
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const navigate = useNavigate();
@@ -12,16 +10,13 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("user");
-    setIsLoggedOut(true);
-    if (isLoggedOut) {
-      toast(
-        <div className="flex items-center gap-2 text-green-600">
-          <CheckCircle className="w-5 h-5" />
-          Successfully Logout, See you soon!!
-        </div>
-      );
-      navigate("/");
-    }
+    toast(
+      <div className="flex items-center gap-2 text-green-600">
+        <CheckCircle className="w-5 h-5" />
+        Successfully Logout, See you soon!!
+      </div>
+    );
+    navigate("/");
   };
 
   return (
