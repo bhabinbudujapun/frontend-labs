@@ -1,13 +1,16 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import { CheckCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const Navbar = () => {
+  const { logout } = useAuth0();
   const token = localStorage.getItem("accessToken");
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    logout();
     localStorage.removeItem("accessToken");
     localStorage.removeItem("user");
     toast(
